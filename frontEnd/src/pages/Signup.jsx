@@ -1,10 +1,11 @@
 import React from 'react'
+import { Form } from '../components/export'
 
 function Signup() {
     return (
-        <div>
-            <h1>Welcome-signup</h1>
-        </div>
+        <section className='w-full h-fit justify-between flex items-center'>
+            <Form />
+        </section>
     )
 }
 
