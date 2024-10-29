@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
     return (
@@ -11,8 +12,8 @@ function Navbar() {
                 <span className='font-Aroboto text-sm'>Services</span>
             </div>
             <div className='flex centerDiv space-x-4'>
-                <button className='w-fit font-medium h-fit px-5 py-1 rounded-md bg-Ablue500 border-solid text-sm border-Ablue500 border-2 '>Signup</button>
-                <button className='w-fit text-sm font-medium h-fit px-5 py-1 rounded-md border-solid border-Ablue500 border-2 '>Login</button>
+                <Link to="/signup"><button className='w-fit text-Agrey500 font-normal h-fit px-5 py-1 rounded-md bg-white border-solid text-sm border-white border-2 '>Signup</button></Link>
+                <button className='w-fit text-white text-sm font-normal h-fit px-5 py-1 rounded-md border-solid border-white border-2 '>Login</button>
             </div>
         </section>
     )

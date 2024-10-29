@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         Agrey500: "#1C1D26",
-        Ablue500: "#251F8D"
+        Ablue500: "#251F8D",
+        Aneutral500: "#666666"
       },
       fontFamily: {
         Aroboto: ["Roboto", "sans-serif"]
