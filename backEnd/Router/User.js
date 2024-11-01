@@ -21,6 +21,9 @@ userRouter.post("/signup", async (req, res) => {
             msg2: error
         })
     }
+    return res.send({
+        msg: "Signup success"
+    })
 })
 
 userRouter.post("/signin", (req, res) => {
