@@ -3,12 +3,19 @@ import mongoose from "mongoose";
 import { userModel } from "../Db.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { val } from "../Auth/Zodvalidation.js";
 
 
 const userRouter = Router();
 
 userRouter.post("/signup", async (req, res) => {
     const { phoneNo, fullname, username, password } = req.body;
+
+    const checkVal = val.safeParse(req.body);
+
+
+
+
     const hashedPass = await bcrypt.hash(password, 8);
     try {
         const upload = await userModel.create({
