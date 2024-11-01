@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { userAtom } from '../../Store/Atoms/Userinfo';
 
-function Input({ title, err, item, type, id, autocomplete, updateData }) {
+function Input({ title, err, item, type, id, autocomplete, }) {
 
+    const updateData = useSetRecoilState(userAtom);
     const handleChange = (e) => {
         let { name, value } = e.target;
         updateData((prev) => ({
