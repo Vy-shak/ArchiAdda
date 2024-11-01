@@ -1,17 +1,10 @@
 import React, { useState } from 'react'
 
-function Input({ title, err, item, type, id, autocomplete }) {
-    const [userData, setUserData] = useState({
-        phoneNo: '',
-        username: '',
-        password: '',
-        fullname: ''
-    });
-    console.log(userData)
+function Input({ title, err, item, type, id, autocomplete, updateData }) {
 
     const handleChange = (e) => {
         let { name, value } = e.target;
-        setUserData((prev) => ({
+        updateData((prev) => ({
             ...prev, [name]: value
         }))
     }
