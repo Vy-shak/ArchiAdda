@@ -15,6 +15,7 @@ function Form() {
             });
             console.log(upload.data)
         } catch (error) {
+            console.log(error)
             console.log("unable to upload")
         }
     }
