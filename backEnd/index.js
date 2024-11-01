@@ -2,12 +2,15 @@ import express, { urlencoded } from "express";
 import { userRouter } from "./Router/User.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors"
 dotenv.config();
 
 
 
 
+
 const app = express();
+app.use(cors())
 
 app.use(express.urlencoded());
 app.use(express.json())

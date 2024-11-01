@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Input from '../Auth/Input.jsx';
 import { useState } from 'react';
+import axios from 'axios';
 
 function Form() {
     const [userData, setUserData] = useState({
@@ -9,6 +10,18 @@ function Form() {
         password: '',
         fullname: ''
     });
+
+    const sendInfo = async () => {
+        try {
+            const upload = axios.post('http://localhost:3000/user/signup', userData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        } catch (error) {
+            console.log("unable to upload")
+        }
+    }
 
     console.log(userData)
 
@@ -27,7 +40,7 @@ function Form() {
                         <Input updateData={setUserData} item={"username"} id={3} title={"User Name"} />
                         <Input updateData={setUserData} item={"password"} id={4} autocomplete={"new-password"} type={"password"} title={"Password"} />
                     </div>
-                    <button className='bg-blue-900 mt-4 px-24 rounded-md py-2 text-sm'>Join</button>
+                    <button onClick={sendInfo} className='bg-blue-900 mt-4 px-24 rounded-md py-2 text-sm'>Join</button>
                 </form>
             </div>
         </div>
