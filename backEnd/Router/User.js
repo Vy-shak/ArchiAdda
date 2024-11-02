@@ -1,5 +1,4 @@
 import { Router } from "express";
-import mongoose from "mongoose";
 import { userModel } from "../Db.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -13,26 +12,31 @@ userRouter.post("/signup", async (req, res) => {
 
     const checkVal = val.safeParse(req.body);
 
-
-
-
-    const hashedPass = await bcrypt.hash(password, 8);
-    try {
-        const upload = await userModel.create({
-            phoneNo: phoneNo,
-            fullname: fullname,
-            username: username,
-            password: hashedPass
-        })
-    } catch (error) {
+    if (checkVal.success) {
+        const hashedPass = await bcrypt.hash(password, 8);
+        try {
+            const upload = await userModel.create({
+                phoneNo: phoneNo,
+                fullname: fullname,
+                username: username,
+                password: hashedPass
+            })
+        } catch (error) {
+            return res.send({
+                msg1: "some error happend while uploading to db ",
+                msg2: error
+            })
+        }
         return res.send({
-            msg1: "some error happend while uploading to db ",
-            msg2: error
+            msg: "Signup success"
         })
     }
-    return res.send({
-        msg: "Signup success"
-    })
+    else {
+        return res.send({
+            err: checkVal.error
+        })
+    }
+
 })
 
 userRouter.post("/signin", async (req, res) => {
@@ -44,7 +48,6 @@ userRouter.post("/signin", async (req, res) => {
         });
         const result = await bcrypt.compare(password, find.password);
 
-        console.log(find, result)
         if (result && find) {
             const token = jwt.sign({
                 id: find._id.toString()
