@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { userAtom } from '../../Store/Atoms/Userinfo';
+import { memo } from 'react';
 
-function Input({ title, err, item, type, id, autocomplete, }) {
+const Input = memo(({ title, err, item, type, id, autocomplete, }) => {
 
     const updateData = useSetRecoilState(userAtom);
+
     const handleChange = (e) => {
         let { name, value } = e.target;
         updateData((prev) => ({
@@ -19,6 +21,6 @@ function Input({ title, err, item, type, id, autocomplete, }) {
             <span className='text-[12px] ml-2 text-red-800 '>{err}</span>
         </div>
     )
-}
+})
 
 export default Input
