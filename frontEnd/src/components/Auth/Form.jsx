@@ -30,12 +30,22 @@ function Form() {
                 }
             });
             console.log(upload)
+            const zodError = upload?.data?.err?.issues
             if (upload?.data?.err?.issues) {
                 zodError.map((item) => {
                     setErrdata((prev) => (
                         { ...prev, [item.path[0]]: item.message }
                     ))
-                })
+                });
+            }
+            const duplicateErr = upload?.data?.msg2;
+            if (duplicateErr.code === 11000) {
+                const source = Object.keys(duplicateErr.keyPattern)[0];
+                const message = `This ${source} already exist`;
+                setErrdata((prev) => (
+                    { ...prev, [source]: [message] }
+                ))
+
             }
 
         } catch (error) {
