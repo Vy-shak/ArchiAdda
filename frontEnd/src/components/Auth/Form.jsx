@@ -3,6 +3,7 @@ import Input from '../Auth/Input.jsx';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { userAtom, errAtominput } from '../../Store/Atoms/Userinfo.jsx';
 import axios from 'axios';
+import { data } from 'autoprefixer';
 
 function Form() {
     const [errData, setErrdata] = useState({
@@ -29,14 +30,17 @@ function Form() {
                     'Content-Type': 'application/json'
                 }
             });
-            console.log(upload)
-            if (upload?.data?.err?.issues) {
+            console.log(upload);
+
+            const zodError = upload?.data?.err?.issues
+            if (zodError) {
                 zodError.map((item) => {
                     setErrdata((prev) => (
                         { ...prev, [item.path[0]]: item.message }
                     ))
                 })
             }
+            const SignupErr = upload?.data?.err?.code;
 
         } catch (error) {
             console.log(error)

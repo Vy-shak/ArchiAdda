@@ -13,23 +13,36 @@ userRouter.post("/signup", async (req, res) => {
     const checkVal = val.safeParse(req.body);
 
     if (checkVal.success) {
-        const hashedPass = await bcrypt.hash(password, 8);
-        try {
-            const upload = await userModel.create({
-                phoneNo: phoneNo,
-                fullname: fullname,
-                username: username,
-                password: hashedPass
-            })
-        } catch (error) {
+        const PhoneCheck = await userModel.findOne({
+            phoneNo: phoneNo,
+        });
+
+        console.log(PhoneCheck)
+        if (!PhoneCheck) {
             return res.send({
-                msg1: "some error happend while uploading to db ",
-                msg2: error
+                content: "Phone num already exist",
+                source: "phoneNo"
             })
         }
-        return res.send({
-            msg: "Signup success"
-        })
+        else {
+            const hashedPass = await bcrypt.hash(password, 8);
+
+            try {
+                const upload = await userModel.create({
+                    phoneNo: phoneNo,
+                    fullname: fullname,
+                    username: username,
+                    password: hashedPass
+                })
+            } catch (error) {
+                res.send({
+                    msg: "some problem in uploading data to mongo"
+                })
+            }
+            return res.send({
+                msg: "Signup success"
+            })
+        }
     }
     else {
         return res.send({
@@ -62,7 +75,6 @@ userRouter.post("/signin", async (req, res) => {
 
     } catch (error) {
         return res.send({
-            msg: "some problem in finding your account",
             err: error
         })
     }
