@@ -8,4 +8,14 @@ export const userAtom = atom({
         fullname: ''
     },
     key: "user"
+});
+
+export const errAtominput = atom({
+    default: {
+        phoneNo: [],
+        username: [],
+        password: [],
+        fullname: []
+    },
+    key: "inputError"
 })
