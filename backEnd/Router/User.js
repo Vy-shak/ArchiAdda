@@ -46,7 +46,12 @@ userRouter.post("/signin", async (req, res) => {
             username: username,
         });
         const result = await bcrypt.compare(password, find.password);
-        console.log(result)
+        if (!result) {
+            return res.send({
+                err: "password is not correct"
+            })
+        };
+
         if (result && find) {
             const token = jwt.sign({
                 id: find._id.toString()
@@ -60,7 +65,7 @@ userRouter.post("/signin", async (req, res) => {
 
     } catch (error) {
         return res.send({
-            msg: "some problem in finding your account",
+            msg: "wrong credentials",
             err: error
         })
     }
