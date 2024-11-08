@@ -13,9 +13,9 @@ function Navbar() {
             </div>
             <div className='flex centerDiv space-x-4'>
                 <Link to="/signup"><button className='w-fit text-Agrey500 font-normal h-fit px-5 py-1 rounded-md bg-white border-solid text-sm border-white border-2 '>Signup</button></Link>
-                <button className='w-fit text-white text-sm font-normal h-fit px-5 py-1 rounded-md border-solid border-white border-2 '>Login</button>
+                <Link to="/login"><button className='w-fit text-white text-sm font-normal h-fit px-5 py-1 rounded-md border-solid border-white border-2 '>Login</button></Link>
             </div>
-        </section>
+        </section >
     )
 }
 

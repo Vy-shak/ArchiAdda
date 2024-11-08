@@ -41,18 +41,16 @@ userRouter.post("/signup", async (req, res) => {
 
 userRouter.post("/signin", async (req, res) => {
     const { username, password } = req.body;
-
     try {
         const find = await userModel.findOne({
             username: username,
         });
         const result = await bcrypt.compare(password, find.password);
-
+        console.log(result)
         if (result && find) {
             const token = jwt.sign({
                 id: find._id.toString()
             }, process.env.JWT_KEY,);
-
             if (token) {
                 return res.send({
                     token: token

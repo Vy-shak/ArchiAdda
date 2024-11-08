@@ -39,7 +39,7 @@ function Form() {
                 });
             }
             const duplicateErr = upload?.data?.msg2;
-            if (duplicateErr.code === 11000) {
+            if (duplicateErr?.code === 11000) {
                 const source = Object.keys(duplicateErr.keyPattern)[0];
                 const message = `This ${source} already exist`;
                 setErrdata((prev) => (
