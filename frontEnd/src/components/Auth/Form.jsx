@@ -10,9 +10,12 @@ function Form() {
         username: [],
         password: [],
         fullname: []
-    })
+    });
+
     console.log(errData);
+
     const userData = useRecoilValue(userAtom);
+
     const initState = {
         phoneNo: [],
         username: [],
@@ -46,7 +49,8 @@ function Form() {
                     { ...prev, [source]: [message] }
                 ))
 
-            }
+            };
+
 
         } catch (error) {
             console.log(error)
@@ -70,6 +74,7 @@ function Form() {
                         <Input item={"password"} id={4} autocomplete={"new-password"} type={"password"} title={"Password"} errMsg={errData.password} />
                     </div>
                     <button onClick={sendInfo} className='bg-blue-900 mt-4 px-24 rounded-md py-2 text-sm'>Join</button>
+                    <p className='text-Agrey300 text-[16px] mt-2'>Already has an account?<span className='text-[18px] text-Ablue600 font-semibold'>Login</span></p>
                 </form>
             </div>
         </div>

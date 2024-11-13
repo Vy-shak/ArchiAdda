@@ -31,7 +31,6 @@ export default {
         Agrey1000: "#c2c3d2",
         Agrey1100: "#dadbe4",
         Agrey1200: "#f3f3f6",
-
         Aneutral500: "#666666"
       },
       fontFamily: {

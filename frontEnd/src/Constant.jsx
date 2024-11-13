@@ -1,0 +1,1 @@
+export const Navmenu = [{ name: "Queries", icon: 'message-dots' }, { name: "Market place", icon: 'store' }, { name: "Work", icon: 'briefcase' }]

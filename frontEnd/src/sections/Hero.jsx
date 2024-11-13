@@ -28,10 +28,12 @@ function Hero() {
                                 Join
                             </button>
                         </Link>
-                        <button className=' text-Agrey500 flex-shrink-0  text-sm px-12 py-2 border-2 border-solid border-Ablue500 rounded-sm space-x-4 centerDiv'>
-                            <Users />
-                            Nah,Let me try first
-                        </button>
+                        <Link to='/home'>
+                            <button className=' text-Agrey500 flex-shrink-0  text-sm px-12 py-2 border-2 border-solid border-Ablue500 rounded-sm space-x-4 centerDiv'>
+                                <Users />
+                                Nah,Let me try first
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <div className='w-full h-fit '>
