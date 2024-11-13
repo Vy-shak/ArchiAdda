@@ -11,7 +11,7 @@ function Sidebar() {
     }
 
     return (
-        <div className={`${miniSbar ? 'w-12' : null} w-36 px-4 h-full  flex flex-col justify-start items-start bg-white absolute bottom-0 left-0`}>
+        <div className={`${miniSbar ? 'w-12' : 'w-36'} px-4 h-full transition-width ease-in-out flex flex-col justify-start items-start bg-white absolute bottom-0 left-0`}>
             <div onClick={handleSbar} className={` ${miniSbar ? 'justify-center' : null} w-full h-fit flex justify-end items-center `}>
                 <box-icon name='menu-alt-right'></box-icon>
             </div>
